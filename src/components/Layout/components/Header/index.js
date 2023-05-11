@@ -9,7 +9,6 @@ import {
     faEarthAsia,
     faCircleQuestion,
     faKeyboard,
-    faCloudArrowUp,
     faUser,
     faCoins,
     faGear,
@@ -25,6 +24,8 @@ import styles from './Header.module.scss';
 import images from '~/assets/imgaes';
 import AccountItem from '../AccountItem';
 import Menu from '~/components/Popper/Menu';
+import { UploadIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -137,7 +138,7 @@ function Header() {
                         <>
                             <Tippy delay={[0, 200]} content="Upload video">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudArrowUp} />
+                                    <UploadIcon />
                                 </button>
                             </Tippy>
                         </>
@@ -150,10 +151,11 @@ function Header() {
 
                     <Menu items={currentUser ? userMenu : MENU_ITEM} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
-                                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/7221089772339953691~c5_100x100.jpeg?x-expires=1683853200&x-signature=Iq4Tbfj93YwOVdFrsvT2Ms%2BgMm4%3D"
+                            <Image
+                                src="h123ttps://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/7221089772339953691~c5_100x100.jpeg?x-expires=1683853200&x-signature=Iq4Tbfj93YwOVdFrsvT2Ms%2BgMm4%3D"
                                 className={cx('user-avatar')}
                                 alt="Nguyen Van A"
+                                fallback="https://i.pinimg.com/236x/49/c0/e2/49c0e27fa25b2a8d32148ef9bfb4c930.jpg"
                             />
                         ) : (
                             <button className={cx('more-btn')}>
