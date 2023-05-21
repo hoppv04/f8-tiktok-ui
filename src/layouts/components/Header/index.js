@@ -14,11 +14,11 @@ import classNames from 'classnames/bind';
 import 'tippy.js/dist/tippy.css';
 import { Link } from 'react-router-dom';
 
-import routesConfig from '~/confis/routes';
-import images from '~/assets/imgaes';
+import config from '~/config';
+import images from '~/assets/images';
 import { InboxIcon, MessageIcon, UploadIcon } from '~/components/Icons';
 import Image from '~/components/Image';
-import Button from '~/components/Layout/components/Button';
+import Button from '~/layouts/components/Button';
 import Menu from '~/components/Popper/Menu';
 import Search from '../Search';
 import styles from './Header.module.scss';
@@ -52,7 +52,7 @@ const MENU_ITEM = [
     },
     {
         icon: <FontAwesomeIcon icon={faKeyboard} />,
-        title: 'Keybroad shortcuts',
+        title: 'Keyboard shortcuts',
     },
 ];
 
@@ -93,7 +93,7 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <Link to={routesConfig.home} className={cx('logo-link')}>
+                    <Link to={config.routes.home} className={cx('logo-link')}>
                         <img src={images.logo} alt="Tiktok" />
                     </Link>
                 </div>
@@ -130,7 +130,7 @@ function Header() {
                     <Menu items={currentUser ? userMenu : MENU_ITEM} onChange={handleMenuChange}>
                         {currentUser ? (
                             <Image
-                                src="h123ttps://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/7221089772339953691~c5_100x100.jpeg?x-expires=1683853200&x-signature=Iq4Tbfj93YwOVdFrsvT2Ms%2BgMm4%3D"
+                                src="https://i.pinimg.com/236x/49/c0/e2/49c0e27fa25b2a8d32148ef9bfb4c930.jpg"
                                 className={cx('user-avatar')}
                                 alt="Nguyen Van A"
                                 fallback="https://i.pinimg.com/236x/49/c0/e2/49c0e27fa25b2a8d32148ef9bfb4c930.jpg"
