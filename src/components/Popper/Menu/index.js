@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
-import { Wrapper as PopperWraper } from '~/components/Popper';
+import { Wrapper as PopperWrapper } from '~/components/Popper';
 import MenuItem from './MenuItem';
 import Header from './Header';
 import styles from './Menu.module.scss';
@@ -16,14 +17,14 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
 
     const renderItem = () => {
         return current.data.map((item, index) => {
-            const isParrent = !!item.children;
+            const isParent = !!item.children;
 
             return (
                 <MenuItem
                     key={index}
                     data={item}
                     onClick={() => {
-                        if (isParrent) {
+                        if (isParent) {
                             setHistory((prev) => [...prev, item.children]);
                         } else {
                             onChange(item);
@@ -43,17 +44,17 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
             offset={[12, 8]}
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
-                    <PopperWraper className={cx('menu-popper')}>
+                    <PopperWrapper className={cx('menu-popper')}>
                         {history.length > 1 && (
                             <Header
-                                title="Language"
+                                title={current.title}
                                 onBack={() => {
                                     setHistory((prev) => prev.slice(0, prev.length - 1));
                                 }}
                             />
                         )}
                         <div className={cx('menu-body')}>{renderItem()}</div>
-                    </PopperWraper>
+                    </PopperWrapper>
                 </div>
             )}
             onHide={() => setHistory((prev) => prev.slice(0, 1))}
@@ -62,5 +63,12 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
         </Tippy>
     );
 }
+
+Menu.propTypes = {
+    children: PropTypes.node.isRequired,
+    items: PropTypes.array,
+    hideOnClick: PropTypes.bool,
+    onChange: PropTypes.func,
+};
 
 export default Menu;
