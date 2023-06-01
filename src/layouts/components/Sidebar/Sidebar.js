@@ -11,7 +11,6 @@ import {
     LiveActiveIcon,
 } from '~/components/Icons';
 import SuggestedAccounts from '~/components/SuggestedAccounts/SuggestedAccounts';
-import AccountItem from '~/components/SuggestedAccounts/AccountItem';
 
 const cx = classNames.bind(styles);
 
